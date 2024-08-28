@@ -1,0 +1,176 @@
+{
+    "additional-repositories": [],
+    "archinstall-language": "English",
+    "audio_config": {
+        "audio": "pipewire"
+    },
+    "bootloader": "Grub",
+    "config_version": "2.8.5",
+    "debug": false,
+    "disk_config": {
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/nvme0n1",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "Boot",
+                            "ESP"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "796b9e87-c15d-4850-b2ee-89644595c77c",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "ext4",
+                        "mount_options": [],
+                        "mountpoint": "/",
+                        "obj_id": "74df9472-3ced-4001-8a1c-758c72a3a91d",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 511034351616
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ],
+        "lvm_config": {
+            "config_type": "default",
+            "vol_groups": [
+                {
+                    "lvm_pvs": [
+                        "74df9472-3ced-4001-8a1c-758c72a3a91d"
+                    ],
+                    "name": "ArchinstallVg",
+                    "volumes": [
+                        {
+                            "btrfs": [],
+                            "fs_type": "ext4",
+                            "length": {
+                                "sector_size": {
+                                    "unit": "B",
+                                    "value": 512
+                                },
+                                "unit": "GiB",
+                                "value": 20
+                            },
+                            "mount_options": [],
+                            "mountpoint": "/",
+                            "name": "root",
+                            "obj_id": "5e94a8ca-002b-4c28-8f0b-ed7464b60756",
+                            "status": "create"
+                        },
+                        {
+                            "btrfs": [],
+                            "fs_type": "ext4",
+                            "length": {
+                                "sector_size": {
+                                    "unit": "B",
+                                    "value": 512
+                                },
+                                "unit": "B",
+                                "value": 489559515136
+                            },
+                            "mount_options": [],
+                            "mountpoint": "/home",
+                            "name": "home",
+                            "obj_id": "b5e17303-ba23-4ddb-83a0-e0de719ede7f",
+                            "status": "create"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "disk_encryption": {
+        "encryption_type": "lvm_on_luks",
+        "lvm_volumes": [],
+        "partitions": [
+            "74df9472-3ced-4001-8a1c-758c72a3a91d"
+        ]
+    },
+    "hostname": "host",
+    "kernels": [
+        "linux",
+        "linux-hardened"
+    ],
+    "locale_config": {
+        "kb_layout": "fr",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US"
+    },
+    "mirror_config": null,
+    "network_config": {
+        "type": "nm"
+    },
+    "no_pkg_lookups": false,
+    "ntp": true,
+    "offline": false,
+    "packages": [
+        "bleachbit",
+        "curl",
+        "firefox",
+        "git",
+        "htop",
+        "neofetch",
+        "wget"
+    ],
+    "parallel downloads": 0,
+    "profile_config": {
+        "gfx_driver": null,
+        "greeter": null,
+        "profile": {
+            "custom_settings": {},
+            "details": [],
+            "main": "Minimal"
+        }
+    },
+    "script": "guided",
+    "silent": false,
+    "skip_ntp": false,
+    "skip_version_check": false,
+    "swap": false,
+    "timezone": "UTC",
+    "uki": false,
+    "version": "2.8.5"
+}
