@@ -2,7 +2,8 @@
 MOZILLA="$(find ~/.mozilla -name "*.default-release")"
 
 echo "[+] Install tools"
-yay -S --needed --noconfirm arch-audit libpwquality lynis rkhunter shh
+yay -S --needed --noconfirm arch-audit haveged libpwquality lynis rkhunter shh
+sudo systemctl enable --now haveged
 
 echo "[+] Configure rkhunter"
 sudo rkhunter --update

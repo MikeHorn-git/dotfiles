@@ -24,6 +24,12 @@ chmod +x strap.sh
 sudo ./strap.sh
 rm ./strap.sh
 
+echo "[+] Configure virt-manager"
+sudo pacman -S --neded dmidecode qemu-base virt-manager
+sudo systemctl enable --now libvirtd.service
+sudo sed -i "/#unix_sock_group = \"libvirt\"/cunix_sock_group = \"libvirt\"" /etc/libvirt/libvirtd.conf
+sudo sed -i "/#unix_sock_ro_perms = \"0777\"/cunix_sock_ro_perms = \"0777\"" /etc/libvirt/libvirtd.conf
+
 echo "[+] Install oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -31,3 +37,5 @@ echo "[+] Add alias"
 echo "alias vim=nvim" >> ~/.zshrc
 source ~/.zshrc
 
+echo "[+] Set Timezone"
+sudo timedatectl set-timezone Europe/Paris
