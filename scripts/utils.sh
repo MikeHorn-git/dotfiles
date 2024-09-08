@@ -39,3 +39,9 @@ source ~/.zshrc
 
 echo "[+] Set Timezone"
 sudo timedatectl set-timezone Europe/Paris
+
+echo "[+] Clean Packages"
+yay -Rs "$(yay -Qqdt)"
+
+echo "[+] Create Folders"
+mkdir ~/Documents ~/Downloads ~/Projects

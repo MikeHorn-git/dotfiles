@@ -148,6 +148,7 @@
     "offline": false,
     "packages": [
         "bleachbit",
+        "brightnessctl",
         "curl",
         "firefox",
         "git",
@@ -156,6 +157,8 @@
         "neovim",
         "openssh",
         "p7zip",
+        "pamixer",
+        "keepassxc",
         "rust",
         "tmux",
         "unzip",
