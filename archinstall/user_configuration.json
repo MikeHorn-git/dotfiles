@@ -153,6 +153,8 @@
         "firefox",
         "git",
         "htop",
+        "linux-headers",
+        "linux-hardened-headers",
         "neofetch",
         "neovim",
         "openssh",
