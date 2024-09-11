@@ -3,10 +3,6 @@
 echo "[+] Generate secure ssh key"
 ssh-keygen -t ed25519 -a 100
 
-echo "[+] Configure Github"
-git config --global user.email "MikeHornProton@proton.me"
-git config --global user.name "MikeHorn-git"
-
 echo "[+] Install dotfiles"
 git clone https://github.com/MikeHorn-git/dotfiles.git
 cd dotfiles
