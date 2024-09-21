@@ -5,7 +5,7 @@ ssh-keygen -t ed25519 -a 100
 
 echo "[+] Install dotfiles"
 git clone https://github.com/MikeHorn-git/dotfiles.git
-cd dotfiles
+cd dotfiles || exit
 cp -r nvim tmux ~/.config
 sudo cp hyprland/arch/hyprland.conf ~/.config/hypr
 sudo cp etc/thinkfan.conf /etc/
@@ -38,6 +38,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 echo "[+] Add alias"
 echo "alias vim=nvim" >> ~/.zshrc
+# shellcheck source=/dev/null
 source ~/.zshrc
 
 echo "[+] Set Timezone"
