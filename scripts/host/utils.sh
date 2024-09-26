@@ -28,6 +28,7 @@ sudo sed -i "/#unix_sock_group = \"libvirt\"/cunix_sock_group = \"libvirt\"" /et
 sudo sed -i "/#unix_sock_ro_perms = \"0777\"/cunix_sock_ro_perms = \"0777\"" /etc/libvirt/libvirtd.conf
 sudo usermod -a -G libvirt "$(whoami)"
 sudo systemctl restart libvirtd.service
+sudo virsh net-autostart default
 
 echo "[+] Configure thinkfan"
 yay -S thinkfan
