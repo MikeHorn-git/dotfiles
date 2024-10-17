@@ -171,6 +171,7 @@
         "unzip",
         "virt-manager",
         "wget",
+        "xorg-xhost",
         "zsh"
     ],
     "parallel downloads": 0,

@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
-  home.username = "ecole";
-  home.homeDirectory = "/home/ecole";
+  home.username = "archlinux";
+  home.homeDirectory = "/home/archlinux";
 
   targets.genericLinux.enable = true;
 
