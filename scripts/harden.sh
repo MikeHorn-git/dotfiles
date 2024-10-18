@@ -37,7 +37,7 @@ sudo chmod o-rx /usr/bin/cc
 sudo chmod o-rx /usr/bin/g++
 sudo chmod o-rx /usr/bin/gcc
 
-echo "[+] Harden login.degs"
+echo "[+] Harden login.defs"
 sudo sed -i "/UMASK                022/cUMASK              027" /etc/login.defs
 sudo sed -i "/PASS_MIN_DAYS        0/cPASS_MIN_DAYS        1" /etc/login.defs
 sudo sed -i "/PASS_MAX_DAYS        99999/cPASS_MAX_DAYS    60" /etc/login.defs
