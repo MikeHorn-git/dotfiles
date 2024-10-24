@@ -1,3 +1,3 @@
 {
-  "data-root": "~/.local/share/docker"
+  "data-root": "/home/archlinux/.local/share/docker"
 }
