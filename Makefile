@@ -34,6 +34,7 @@ help:
 	@echo "  scripts         Run custom scripts and log the output"
 	@echo "  tmux            Copy Tmux configuration files"
 	@echo "  all             Run all setup tasks (assets, dots, hyprland, nvim, scripts)"
+	@echo "  base            Runbase setup tasks (assets, hyprland, nvim)"
 	@echo "  prune           Remove all log files in the scripts directory"
 	@echo "  clean           Clean everything"
 
@@ -64,6 +65,8 @@ tmux:
 
 all: assets dots hyprland nvim scripts
 
+base: assets hyprland nvim
+
 prune:
 	rm -f $(LOG_FILES)
 
@@ -76,4 +79,4 @@ clean:
 	$(SU) rm /etc/sddm.conf /etc/thinkfan.conf
 	$(SU) rm -rf /etc/systemd/system/thinkfan.service.d/
 
-.PHONY: help assets dots hyprland nix nvim scripts tmux all prune clean test all
+.PHONY: help assets dots hyprland nix nvim scripts tmux all base prune clean
