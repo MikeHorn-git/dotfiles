@@ -12,9 +12,6 @@ NVIM_DIR := ./nvim
 SCRIPT_DIR := ./scripts
 TMUX_DIR := ./tmux
 
-# Nix
-NIX_TARGET := .#archlinux
-
 # Wildcard for log files in the scripts directory
 LOG_FILES := $(wildcard $(SCRIPT_DIR)/*.log)
 # Wildcard for config files in the etc directory
@@ -29,7 +26,6 @@ help:
 	@echo "  assets          Copy assets directory to .config"
 	@echo "  dots            Copy dotfiles and etc config files"
 	@echo "  hyprland        Copy Hyprland configuration files"
-	@echo "  nix             Switch Nix home-manager configuration"
 	@echo "  nvim            Copy Neovim configuration files"
 	@echo "  scripts         Run custom scripts and log the output"
 	@echo "  tmux            Copy Tmux configuration files"
@@ -48,9 +44,6 @@ dots:
 
 hyprland:
 	$(CP) $(wildcard $(HYPR_DIR)/*.conf) $(CONFIG_DIR)/$(HYPR_DIR)
-
-nix:
-	home-manager switch --flake $(NIX_TARGET)
 
 nvim:
 	$(CP) $(NVIM_DIR) $(CONFIG_DIR)/nvim
@@ -79,4 +72,4 @@ clean:
 	$(SU) rm /etc/sddm.conf /etc/thinkfan.conf
 	$(SU) rm -rf /etc/systemd/system/thinkfan.service.d/
 
-.PHONY: help assets dots hyprland nix nvim scripts tmux all base prune clean
+.PHONY: help assets dots hyprland nvim scripts tmux all base prune clean
