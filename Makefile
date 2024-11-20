@@ -63,7 +63,7 @@ scripts:
 	$(SH) $(SCRIPT_DIR)/utils.sh | tee $(SCRIPT_DIR)/utils.log
 
 thinkfan:
-	$(CP) $(THINK_DIR) $(ETC_DIR)
+	$(SU) $(CP) $(THINK_DIR) $(ETC_DIR)
 
 tmux:
 	$(CP) $(TMUX_DIR) $(CONFIG_DIR)/tmux
