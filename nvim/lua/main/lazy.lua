@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Alphabet plugin name order
 require("lazy").setup({
+    "MikeHorn-git/ctws.vim",
 	{
     		"ThePrimeagen/harpoon",
     		branch = "harpoon2",
