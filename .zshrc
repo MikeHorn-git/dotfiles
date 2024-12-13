@@ -11,6 +11,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
+alias bleachbit="xhost si:localuser:root && sudo bleachbit"
 alias vi=nvim
 alias vim=nvim
 
