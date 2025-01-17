@@ -31,12 +31,6 @@ cd "$MOZILLA" || exit
 echo "[+] Disable core dump"
 sudo sed -i "/# End of file/c* hard core 0\n* soft core 0\n# End of file" /etc/security/limits.conf
 
-echo "[+] Restrict compiler to root"
-sudo chmod o-rx /usr/bin/as
-sudo chmod o-rx /usr/bin/cc
-sudo chmod o-rx /usr/bin/g++
-sudo chmod o-rx /usr/bin/gcc
-
 echo "[+] Harden login.defs"
 sudo sed -i "/UMASK                022/cUMASK              027" /etc/login.defs
 sudo sed -i "/PASS_MIN_DAYS        0/cPASS_MIN_DAYS        1" /etc/login.defs

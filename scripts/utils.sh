@@ -3,16 +3,6 @@
 echo "[+] Generate secure ssh key"
 ssh-keygen -t ed25519 -a 100
 
-echo "[+] Install dotfiles"
-git clone https://github.com/MikeHorn-git/dotfiles.git
-cd dotfiles || exit
-cp -r nvim tmux ~/.config
-sudo cp hyprland/arch/hyprland.conf ~/.config/hypr
-sudo cp etc/thinkfan.conf /etc/
-sudo cp etc/systemd/system/thinkfan.service.d/override.conf /etc/systemd/system/thinkfan.service.d/
-sudo cp etc/sddm.conf /etc/
-cd ../; rm -rf dotfiles
-
 echo "[+] Install blackarch repos"
 curl -O https://blackarch.org/strap.sh
 echo 26849980b35a42e6e192c6d9ed8c46f0d6d06047 strap.sh | sha1sum -c
@@ -20,6 +10,9 @@ chmod +x strap.sh
 sudo ./strap.sh
 rm ./strap.sh
 sudo pacman -Syyu --noconfirm
+
+echo "[+] Add yay"
+sudo pacman -S yay --noconfirm
 
 echo "[+] Configure virt-manager"
 sudo pacman -S --needed --noconfirm dmidecode dnsmasq qemu-base virt-manager
@@ -31,7 +24,7 @@ sudo systemctl restart libvirtd.service
 sudo virsh net-autostart default
 
 echo "[+] Configure thinkfan"
-yay -S thinkfan
+yay -S thinkfan --noconfirm
 sudo systemctl enable --now thinkfan.service
 
 echo "[+] Install oh-my-zsh"
@@ -39,8 +32,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 echo "[+] Add alias"
 echo "alias vim=nvim" >> ~/.zshrc
-# shellcheck source=/dev/null
-source ~/.zshrc
 
 echo "[+] Set Timezone"
 sudo timedatectl set-timezone Europe/Paris
