@@ -14,6 +14,7 @@ KITTY_DIR := ./kitty
 NVIM_DIR := ./nvim
 SCRIPT_DIR := ./scripts
 SDDM_DIR := ./sddm
+SWAY_DIR := ./sway
 THINK_DIR := ./thinkfan
 TMUX_DIR := ./tmux
 TOFI_DIR := ./tofi
@@ -31,18 +32,19 @@ help:
 	@echo "Usage: make <target>"
 	@echo "Targets:"
 	@echo "  help            Show this help message"
-	@echo "  assets          Copy assets directory to .config"
+	@echo "  assets          Copy assets directory"
 	@echo "  dots            Copy dotfiles to home directory"
 	@echo "  hyprland        Copy Hyprland configuration files"
-	@echo "  kitty           "
+	@echo "  kitty           Copy Kitty configuration files"
 	@echo "  nvim            Copy Neovim configuration files"
-	@echo "  sddm            "
 	@echo "  scripts         Execute scripts and log outputs"
+	@echo "  sddm            Copy sddm configuration files"
+	@echo "  sway            Copy Sway configuration files
 	@echo "  thinkfan        Copy Thinkfan configuration files to /etc"
-	@echo "  tmux            Copy Tmux configuration files to .config"
-	@echo "  tofi            Copy Tofi configuration files to .config"
-	@echo "  waybar          Copy Waybar configuration files to .config"
-	@echo "  wlogout         "
+	@echo "  tmux            Copy Tmux configuration files"
+	@echo "  tofi            Copy Tofi configuration files"
+	@echo "  waybar          Copy Waybar configuration files"
+	@echo "  wlogout         Copy wlogout configuration files"
 	@echo "  base            Set up base configurations (Hyprland, Sddm, Tofi, Waybar, Wlogout)"
 	@echo "  custom          Set up custom configurations (Assets, Dotfiles, Thinkfan)"
 	@echo "  utils           Set up utility configurations (Kitty, Neovim, Tmux)"
@@ -66,13 +68,16 @@ kitty:
 nvim:
 	$(CP) $(NVIM_DIR) $(CONFIG_DIR)/nvim
 
-sddm:
-	$SU) $(CP) $(SDDM_DIR) /etc
-
 scripts:
 	$(SH) $(SCRIPT_DIR)/thinkfan.sh | tee $(SCRIPT_DIR)/thinkfan.log
 	$(SH) $(SCRIPT_DIR)/harden.sh | tee $(SCRIPT_DIR)/harden.log
 	$(SH) $(SCRIPT_DIR)/utils.sh | tee $(SCRIPT_DIR)/utils.log
+
+sddm:
+	$(SU) $(CP) $(SDDM_DIR) /etc
+
+sway:
+	$(CP) $(wildcard $(SWAY_DIR)/* $(CONFIG_DIR)/$(SWAY_DIR)
 
 thinkfan:
 	$(SU) $(CP) $(THINK_DIR) $(ETC_DIR)
@@ -105,6 +110,7 @@ clean:
 	rm -rf $(CONFIG_DIR)/assets
 	rm -rf $(CONFIG_DIR)/hypr
 	rm -rf $(CONFIG_DIR)/nvim
+	rm -rf $(CONFIG_DIR)/sway
 	rm -rf $(CONFIG_DIR)/tmux
 	rm -rf $(CONFIG_DIR)/tofi
 	rm -rf $(CONFIG_DIR)/waybar
@@ -112,4 +118,4 @@ clean:
 	$(SU) rm /etc/sddm.conf /etc/thinkfan.conf
 	$(SU) rm -rf /etc/systemd/system/thinkfan.service.d/
 
-.PHONY: help assets dots hyprland kitty nvim sddm scripts thinkfan tmux tofi waybar wlogout base custom utils all prune clean
+.PHONY: help assets dots hyprland kitty nvim sddm scripts sway thinkfan tmux tofi waybar wlogout base custom utils all prune clean
