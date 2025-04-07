@@ -74,7 +74,9 @@ scripts:
 	$(SH) $(SCRIPT_DIR)/utils.sh | tee $(SCRIPT_DIR)/utils.log
 
 sddm:
-	$(SU) $(CP) $(SDDM_DIR) /etc
+	$(SU) $(CP) $(SDDM_DIR)/sddm.conf /etc
+	$(SU) mkdir -p /etc/sddm.conf.d
+	$(SU) $(CP) $(SDDM_DIR)/virtualkbd.conf /etc/sddm.conf.d
 
 sway:
 	$(CP) $(wildcard $(SWAY_DIR)/* $(CONFIG_DIR)/$(SWAY_DIR)
