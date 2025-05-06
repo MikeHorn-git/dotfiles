@@ -13,31 +13,17 @@ help:
 	@echo "Targets:"
 	@echo "  help            Show this help message"
 	@echo "  assets          Copy assets directory"
-	@echo "  hyprland        Copy Hyprland configuration files"
-	@echo "  tofi            Copy Tofi configuration file"
-	@echo "  waybar          Copy Waybar configuration files"
-	@echo "  wlogout         Copy wlogout configuration files"
+	@echo "  sway            Copy Sway configuration file"
 	@echo "  clean           Remove all configurations and clean directories"
 
 assets:
 	$(CP) assets $(CONFIG_DIR)/assets
 
-hyprland:
-	$(CP) $(wildcard hypr/*.conf) $(CONFIG_DIR)/hypr
-
 tofi:
-	$(CP) tofi $(CONFIG_DIR)/tofi
-
-waybar:
-	$(CP) waybar $(CONFIG_DIR)/waybar
-
-wlogout:
-	$(CP) $(wildcard wlogout/*) $(CONFIG_DIR)/wlogout
+	$(CP) sway $(CONFIG_DIR)/sway
 
 clean:
 	rm -rf $(CONFIG_DIR)/assets
-	rm -rf $(CONFIG_DIR)/hypr
-	rm -rf $(CONFIG_DIR)/tofi
-	rm -rf $(CONFIG_DIR)/waybar
+	rm -rf $(CONFIG_DIR)/sway
 
-.PHONY: help assets hyprland tofi waybar wlogout clean
+.PHONY: help assets sway clean
