@@ -39,5 +39,6 @@ clean:
 	rm -rf $(CONFIG_DIR)/hypr
 	rm -rf $(CONFIG_DIR)/tofi
 	rm -rf $(CONFIG_DIR)/waybar
+	rm -rf $(CONFIG_DIR)/wlogout
 
 .PHONY: help assets hyprland tofi waybar wlogout clean
