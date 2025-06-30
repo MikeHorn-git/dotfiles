@@ -17,8 +17,8 @@ sudo pacman -S yay --noconfirm
 echo "[+] Configure virt-manager"
 sudo pacman -S --needed --noconfirm dmidecode dnsmasq qemu-base virt-manager
 sudo systemctl enable --now libvirtd.service
-sudo sed -i "/#unix_sock_group = \"libvirt\"/cunix_sock_group = \"libvirt\"" /etc/libvirt/libvirtd.conf
-sudo sed -i "/#unix_sock_ro_perms = \"0777\"/cunix_sock_ro_perms = \"0777\"" /etc/libvirt/libvirtd.conf
+sudo sed -i '/#unix_sock_group = "libvirt"/cunix_sock_group = "libvirt"' /etc/libvirt/libvirtd.conf
+sudo sed -i '/#unix_sock_ro_perms = "0777"/cunix_sock_ro_perms = "0777"' /etc/libvirt/libvirtd.conf
 sudo usermod -a -G libvirt "$(whoami)"
 sudo systemctl restart libvirtd.service
 sudo virsh net-autostart default
@@ -31,7 +31,7 @@ echo "[+] Install oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "[+] Add alias"
-echo "alias vim=nvim" >> ~/.zshrc
+echo "alias vim=nvim" >>~/.zshrc
 
 echo "[+] Set Timezone"
 sudo timedatectl set-timezone Europe/Paris
