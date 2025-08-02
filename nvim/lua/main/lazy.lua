@@ -20,12 +20,6 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		lazy = true,
-		config = false,
-	},
-	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
@@ -37,12 +31,17 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 		dependencies = { "hrsh7th/cmp-nvim-lsp" },
 	},
-	"nvim-treesitter/nvim-treesitter",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+	},
 	"williamboman/mason-lspconfig.nvim",
 	"williamboman/mason.nvim",
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
+		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
@@ -53,12 +52,6 @@ require("lazy").setup({
 	"mbbill/undotree",
 	"ThePrimeagen/vim-be-good",
 	"tpope/vim-fugitive",
-	{
-		"folke/which-key.nvim",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-	},
+	"folke/which-key.nvim",
 	"folke/zen-mode.nvim",
 })

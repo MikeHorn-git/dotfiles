@@ -1,6 +1,7 @@
 vim.g.mapleader = " " -- Set <Space> as the leader key
 
 -- Commands
+vim.keymap.set("n", "<leader>ctws", vim.cmd.Ctws) -- Ctws [Clean Trailing WhiteSpace]
 vim.keymap.set("n", "<leader>g", vim.cmd.Git) -- Fugitive [Git]
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy) -- Lazy [PackageManager Plugins]
 vim.keymap.set("n", "<leader>m", vim.cmd.Mason) -- Mason [PackageManager LSP]

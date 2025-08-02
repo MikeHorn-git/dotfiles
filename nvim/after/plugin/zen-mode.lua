@@ -10,13 +10,13 @@ require("zen-mode").setup({
 		-- by default, no options are changed for the Zen window
 		-- uncomment any of the options below, or add other vim.wo options you want to apply
 		options = {
-			-- signcolumn = "no", -- disable signcolumn
+			signcolumn = "no", -- disable signcolumn
 			-- number = false, -- disable number column
-			-- relativenumber = false, -- disable relative numbers
-			-- cursorline = false, -- disable cursorline
-			-- cursorcolumn = false, -- disable cursor column
-			-- foldcolumn = "0", -- disable fold column
-			-- list = false, -- disable whitespace characters
+			relativenumber = false, -- disable relative numbers
+			cursorline = false, -- disable cursorline
+			cursorcolumn = false, -- disable cursor column
+			foldcolumn = "0", -- disable fold column
+			list = false, -- disable whitespace characters
 		},
 	},
 	plugins = {
@@ -38,22 +38,8 @@ require("zen-mode").setup({
 		-- - allow_remote_control socket-only
 		-- - listen_on unix:/tmp/kitty
 		kitty = {
-			enabled = false,
+			enabled = true,
 			font = "+4", -- font size increment
-		},
-		-- this will change the font size on alacritty when in zen mode
-		-- requires  Alacritty Version 0.10.0 or higher
-		-- uses `alacritty msg` subcommand to change font size
-		alacritty = {
-			enabled = false,
-			font = "14", -- font size
-		},
-		-- this will change the font size on wezterm when in zen mode
-		-- See alse also the Plugins/Wezterm section in this projects README
-		wezterm = {
-			enabled = false,
-			-- can be either an absolute font size or the number of incremental steps
-			font = "+4", -- (10% increase per step)
 		},
 	},
 	-- callback where you can add custom code when the Zen window opens

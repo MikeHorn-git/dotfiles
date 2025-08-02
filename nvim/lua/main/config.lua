@@ -1,8 +1,5 @@
 vim.cmd("set number") -- Show line number at startup
 vim.cmd("set relativenumber") -- Show relative line number, execpt for the current line
-vim.cmd([[
-  autocmd FileType bash,c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
-]])
 
 vim.o.tabstop = 4 -- Set tab value of 4
 vim.o.shiftwidth = 4
