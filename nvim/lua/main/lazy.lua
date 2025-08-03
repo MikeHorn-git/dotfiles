@@ -37,8 +37,14 @@ require("lazy").setup({
 		lazy = false,
 		build = ":TSUpdate",
 	},
-	"williamboman/mason-lspconfig.nvim",
-	"williamboman/mason.nvim",
+	{
+		"williamboman/mason-lspconfig.nvim",
+		opts = {},
+	},
+	{
+		"mason-org/mason.nvim",
+		opts = {},
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
@@ -48,10 +54,22 @@ require("lazy").setup({
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
-	"folke/tokyonight.nvim",
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 	"mbbill/undotree",
 	"ThePrimeagen/vim-be-good",
 	"tpope/vim-fugitive",
-	"folke/which-key.nvim",
-	"folke/zen-mode.nvim",
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
+		"folke/zen-mode.nvim",
+		opts = {},
+	},
 })
