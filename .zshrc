@@ -17,6 +17,3 @@ alias vim=nvim
 
 # https://wiki.archlinux.org/title/Kitty#Terminal_issues_with_SSH
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
-
-# PATH
-export PATH="$PATH:/opt/ida-pro"
