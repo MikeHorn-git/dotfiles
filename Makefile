@@ -1,9 +1,4 @@
-# Binaries
-CP = cp -r
-SH := bash
-SU := sudo
-
-# Destination Directories
+# Dir
 CONFIG_DIR := $(HOME)/.config
 
 .DEFAULT_GOAL := help
@@ -47,6 +42,7 @@ kitty:
 
 nix:
 	cp -r nix $(CONFIG_DIR)/nix
+	cp -r nixpkgs $(CONFIG_DIR)/nixpkgs
 
 nvim:
 	cp -r nvim $(CONFIG_DIR)/nvim
@@ -86,6 +82,7 @@ clean:
 	rm -rf $(CONFIG_DIR)/fastfetch
 	rm -rf $(CONFIG_DIR)/kitty
 	rm -rf $(CONFIG_DIR)/nix
+	rm -rf $(CONFIG_DIR)/nixpkgs
 	rm -rf $(CONFIG_DIR)/nvim
 	rm -rf $(CONFIG_DIR)/tmux
 	rm -rf $(CONFIG_DIR)/tofi
