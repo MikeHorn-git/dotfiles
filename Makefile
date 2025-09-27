@@ -21,7 +21,6 @@ help:
 	@echo "  tmux            Copy Tmux configuration file"
 	@echo "  tofi            Copy Tofi configuration file"
 	@echo "  waybar          Copy Waybar configuration files"
-	@echo "  wlogout         Copy Wlogout configuration files"
 	@echo "  all             Complete Hyprland setup"
 	@echo "  clean           Remove all configurations and clean directories"
 
@@ -72,10 +71,7 @@ tofi:
 waybar:
 	cp -r waybar $(CONFIG_DIR)/waybar
 
-wlogout:
-	cp -r wlogout $(CONFIG_DIR)/wlogout
-
-all: hypr tofi waybar wlogout
+all: hypr tofi waybar
 
 clean:
 	rm $(HOME).gdbinit $(HOME).gitconfig $(HOME).gtkrc-2.0 $(HOME).zshrc
@@ -87,8 +83,7 @@ clean:
 	rm -rf $(CONFIG_DIR)/tmux
 	rm -rf $(CONFIG_DIR)/tofi
 	rm -rf $(CONFIG_DIR)/waybar
-	rm -rf $(CONFIG_DIR)/wlogout
 	sudo rm /etc/sddm.conf /etc/thinkfan.conf
 	sudo rm -rf /etc/systemd/system/thinkfan.service.d/
 
-.PHONY: help assets dots fastfetch hypr kitty nix nvim sddm scripts thinkfan tmux tofi waybar wlogout clean all test
+.PHONY: help assets dots fastfetch hypr kitty nix nvim sddm scripts thinkfan tmux tofi waybar clean all test
