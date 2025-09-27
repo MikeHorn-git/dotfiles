@@ -15,18 +15,35 @@
   languages.lua.enable = true;
   languages.shell.enable = true;
 
-  # https://devenv.sh/tasks/
-  tasks = {
-    "lint:run".exec = ''
-      checkmake Makefile
-      nixfmt devenv.nix
+  # https://devenv.sh/scripts/
+  scripts = {
+    lua.exec = ''
       luacheck nvim/
-      pwsh -Command "Install-Module -Name PSScriptAnalyzer -Force"
-      pwsh -Command "Invoke-ScriptAnalyzer -Path winfetch -Recurse"
-      git ls-files --cached --others --exclude-standard '*.sh' | xargs shellcheck
-      git ls-files --cached --others --exclude-standard '*.sh' | xargs shfmt -w
       stylua nvim/'';
+    build.exec = "checkmake Makefile";
+    check.exec = "nixfmt devenv.nix";
+    pwsh.exec = ''
+      pwsh -Command "Install-Module -Name PSScriptAnalyzer -Force"
+      pwsh -Command "Invoke-ScriptAnalyzer -Path winfetch -Recurse"'';
+    shell.exec = ''
+      git ls-files scripts/ | xargs shellcheck
+      git ls-files scripts/ | xargs shfmt -w'';
   };
+
+  # https://devenv.sh/basics/
+  enterShell = ''
+    echo "Available commands:"
+    echo " - lua          : Lint Lua"
+    echo " - make         : Lint Makefile"
+    echo " - nix          : Lint Nix"
+    echo " - pwsh         : Lint Powershell scripts"
+    echo " - shell        : Lint Shell scripts"
+  '';
+
+  # https://devenv.sh/tests/
+  enterTest = ''
+    make
+  '';
 
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
