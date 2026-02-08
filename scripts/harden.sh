@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-MOZILLA="$(find ~/.mozilla -name "*.default-release")"
+MOZILLA="$(find ~/.mozilla -name "*.default-release" || find ~/.config/mozilla -name "*.default-release")"
 
 echo "[+] Install tools"
 yay -S --needed --noconfirm haveged libpwquality lynis
@@ -9,9 +9,7 @@ sudo systemctl enable --now haveged
 echo "[+] Kernel Hardening"
 cd ~ || exit
 git clone https://github.com/MikeHorn-git/kernel.git
-cd kernel/scripts || exit
-chmod +x install.sh
-sudo ./install.sh
+sudo ./kernel.sh
 
 echo "[+] Quad9 DNS"
 echo "nameserver 9.9.9.9" | sudo tee /etc/resolv.conf
@@ -24,6 +22,7 @@ cd user.js || exit
 cp prefsCleaner.sh updater.sh user.js "$MOZILLA"
 cd "$MOZILLA" || exit
 ./prefsCleaner.sh
+rm -rf ~/user.js
 
 echo "[+] Disable core dump"
 sudo sed -i "/# End of file/c* hard core 0\n* soft core 0\n# End of file" /etc/security/limits.conf
