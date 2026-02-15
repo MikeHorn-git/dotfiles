@@ -1,0 +1,15 @@
+{{- if eq .chezmoi.osRelease.id "arch" -}}
+  {{- if ne .wm "sway" -}}
+    #/bin/sh
+    yay -S sway swaylock waybar \
+      network-manager-applet \
+      swayidle slurp swappy \
+      playerctl light wofi
+  {{- else -}}
+    #/bin/sh
+    echo "[-] Sway undetected"
+  {{- end -}}
+{{- else -}}
+  #/bin/sh
+  echo "[-] ArchLinux undetected"
+{{- end -}}

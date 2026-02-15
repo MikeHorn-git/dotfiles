@@ -1,0 +1,10 @@
+{{- $email := promptStringOnce . "email" "Email:" -}}
+{{- $name := promptStringOnce . "name" "Name:" -}}
+{{- $thinkfan := promptStringOnce . "thinkfan" "Thinkfan: yes | no" -}}
+{{- $wm := promptStringOnce . "wm" "WM: hyprland | sway" -}}
+
+[data]
+  email = {{ $email | quote }}
+  name = {{ $name | quote }}
+  thinkfan = {{ $thinkfan | quote }}
+  wm = {{ $wm | quote }}

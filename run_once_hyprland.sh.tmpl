@@ -1,0 +1,14 @@
+{{- if eq .chezmoi.osRelease.id "arch" -}}
+  {{- if eq .wm "hyprland" -}}
+      #!/bin/sh
+      git clone https://github.com/gaurav23b/simple-hyprland.git ~/simple-hyprland
+      cd ~/simple-hyprland/scripts/installer
+      sudo sh install.sh
+  {{- else -}}
+    #!/bin/sh
+    echo "[-] Hyprland undetected"
+  {{- end -}}
+{{- else -}}
+  #!/bin/sh
+  echo "[-] ArchLinux undetected"
+{{- end -}}
