@@ -1,13 +1,15 @@
 {{- if eq .chezmoi.osRelease.id "arch" -}}
   #!/bin/sh
-  echo "[+] ArchLinux detected"
-  echo "[+] Install blackarch repos"
-  curl -O https://blackarch.org/strap.sh
-  echo 00688950aaf5e5804d2abebb8d3d3ea1d28525ed strap.sh | sha1sum -c
-  chmod +x strap.sh
-  sudo ./strap.sh
-  rm ./strap.sh
-  sudo pacman -Syyu --noconfirm
+  if ! grep -q "\[blackarch\]" /etc/pacman.conf; then
+    echo "[+] ArchLinux detected"
+    echo "[+] Install blackarch repos"
+    curl -O https://blackarch.org/strap.sh
+    echo 00688950aaf5e5804d2abebb8d3d3ea1d28525ed strap.sh | sha1sum -c
+    chmod +x strap.sh
+    sudo ./strap.sh
+    rm ./strap.sh
+    sudo pacman -Syyu --noconfirm
+  fi
 
   echo "[+] Add utils"
   sudo pacman -S --needed --noconfirm base-devel keepassxc firefox yay zsh
@@ -16,7 +18,6 @@
   mkdir -p ~/Documents ~/Downloads
 
   {{- if eq .qemu "yes" -}}
-    #!/bin/sh
     echo "[+] Configure virt-manager"
     sudo pacman -S --needed --noconfirm dmidecode dnsmasq qemu-base virt-manager
     sudo systemctl enable --now libvirtd.service
@@ -28,13 +29,11 @@
   {{- end -}}
 
   {{- if eq .docker "yes" -}}
-    #!/bin/sh
     echo "[+] Configure docker"
     sudo pacman -S --needed --noconfirm docker
   {{- end -}}
 
   {{- if eq .thinkfan "yes" -}}
-    #!/bin/sh
     echo "[+] Install thinkfan"
     yay -S --needed --noconfirm thinkfan
     sudo systemctl enable --now thinkfan.service
