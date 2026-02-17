@@ -12,7 +12,7 @@
   fi
 
   echo "[+] Add utils"
-  sudo pacman -S --needed --noconfirm base-devel fastfetch htop keepassxc firefox nvim yay zsh
+  sudo pacman -S --needed --noconfirm base-devel fastfetch htop keepassxc firefox nvim yay zsh;
 
   {{- if eq .qemu "yes" -}}
     #!/bin/sh
@@ -23,13 +23,13 @@
     sudo sed -i '/#unix_sock_ro_perms = "0777"/cunix_sock_ro_perms = "0777"' /etc/libvirt/libvirtd.conf
     sudo usermod -a -G libvirt "$(whoami)"
     sudo systemctl restart libvirtd.service
-    sudo virsh net-autostart default
+    sudo virsh net-autostart default;
   {{- end -}}
 
   {{- if eq .docker "yes" -}}
     #!/bin/sh
     echo "[+] Configure docker"
-    sudo pacman -S --needed --noconfirm docker
+    sudo pacman -S --needed --noconfirm docker;
   {{- end -}}
 
   {{- if eq .thinkfan "yes" -}}
