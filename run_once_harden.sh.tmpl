@@ -36,11 +36,6 @@
 
   echo "[+] Harden firefox"
   yay -S --needed --noconfirm arkenfox-user.js
-  firefox --new-instance &
-  PID=$! # Capture PID
-  sleep 5
-  arkenfox-cleaner
-  kill $PID
 {{- else -}}
   #!/bin/sh
   echo "[-] ArchLinux undetected"
