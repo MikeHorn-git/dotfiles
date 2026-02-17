@@ -1,0 +1,12 @@
+{{- $docker := promptStringOnce . "docker" "Docker: yes | no" -}}
+{{- $email := promptStringOnce . "email" "Email:" -}}
+{{- $name := promptStringOnce . "name" "Name:" -}}
+{{- $qemu := promptStringOnce . "qemu" "Qemu: yes | no" -}}
+{{- $thinkfan := promptStringOnce . "thinkfan" "Thinkfan: yes | no" -}}
+
+[data]
+  docker = {{ $docker | quote }}
+  email = {{ $email | quote }}
+  name = {{ $name | quote }}
+  qemu = {{ $qemu | quote }}
+  thinkfan = {{ $thinkfan | quote }}

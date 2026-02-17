@@ -1,0 +1,15 @@
+# Devenv
+devenv.nix
+devenv.lock
+devenv.yaml
+
+# Git
+.gitignore
+LICENSE
+README.md
+
+# Nvim
+lazy-lock.json
+
+# Prek
+.pre-commit-config.yaml

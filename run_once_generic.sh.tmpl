@@ -1,0 +1,45 @@
+{{- if eq .chezmoi.osRelease.id "arch" -}}
+  #!/bin/sh
+  echo "[+] ArchLinux detected"
+  echo "[+] Install blackarch repos"
+  curl -O https://blackarch.org/strap.sh
+  echo 00688950aaf5e5804d2abebb8d3d3ea1d28525ed strap.sh | sha1sum -c
+  chmod +x strap.sh
+  sudo ./strap.sh
+  rm ./strap.sh
+  sudo pacman -Syyu --noconfirm
+
+  echo "[+] Add utils"
+  sudo pacman -S --needed --noconfirm base-devel keepassxc firefox yay zsh
+
+  echo "[+] Create Folders"
+  mkdir -p ~/Documents ~/Downloads
+
+  {{- if eq .qemu "yes" -}}
+    #!/bin/sh
+    echo "[+] Configure virt-manager"
+    sudo pacman -S --needed --noconfirm dmidecode dnsmasq qemu-base virt-manager
+    sudo systemctl enable --now libvirtd.service
+    sudo sed -i '/#unix_sock_group = "libvirt"/cunix_sock_group = "libvirt"' /etc/libvirt/libvirtd.conf
+    sudo sed -i '/#unix_sock_ro_perms = "0777"/cunix_sock_ro_perms = "0777"' /etc/libvirt/libvirtd.conf
+    sudo usermod -a -G libvirt "$(whoami)"
+    sudo systemctl restart libvirtd.service
+    sudo virsh net-autostart default
+  {{- end -}}
+
+  {{- if eq .docker "yes" -}}
+    #!/bin/sh
+    echo "[+] Configure docker"
+    sudo pacman -S --needed --noconfirm docker
+  {{- end -}}
+
+  {{- if eq .thinkfan "yes" -}}
+    #!/bin/sh
+    echo "[+] Install thinkfan"
+    yay -S --needed --noconfirm thinkfan
+    sudo systemctl enable --now thinkfan.service
+  {{- end -}}
+{{- else -}}
+  #!/bin/sh
+  echo "[-] ArchLinux undetected"
+{{- end -}}
