@@ -12,10 +12,10 @@
   fi
 
   echo "[+] Add utils"
-  sudo pacman -S --needed --noconfirm base-devel keepassxc firefox yay zsh
+  sudo pacman -S --needed --noconfirm base-devel fastfetch htop keepassxc firefox nvim yay zsh
 
-  echo "[+] Create Folders"
-  mkdir -p ~/Documents ~/Downloads
+  echo "[+] Change shell"
+  chsh -s /usr/bin/zsh
 
   {{- if eq .qemu "yes" -}}
     echo "[+] Configure virt-manager"
@@ -38,6 +38,10 @@
     yay -S --needed --noconfirm thinkfan
     sudo systemctl enable --now thinkfan.service
   {{- end -}}
+
+  echo "[+] Create Folders"
+  mkdir -p ~/Documents ~/Downloads
+
 {{- else -}}
   #!/bin/sh
   echo "[-] ArchLinux undetected"
