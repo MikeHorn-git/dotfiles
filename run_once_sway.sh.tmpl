@@ -5,9 +5,7 @@
     network-manager-applet \
     swayidle slurp swappy \
     playerctl light wofi
-  echo 'if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-    exec sway
-fi' >> ~/.zprofile
+  echo 'if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then\n    exec sway\nfi' >> ~/.zprofile
 {{- else -}}
   #!/bin/sh
   echo "[-] ArchLinux undetected"
