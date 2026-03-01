@@ -1,0 +1,30 @@
+repos:
+  - repo: https://github.com/mpv45/pre-commit-luacheck
+    rev: v1.0.1
+    hooks:
+      - id: luacheck
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.9.0
+    hooks:
+      - id: shellcheck
+
+  - repo: https://github.com/mattmoeller/shfmt
+    rev: v3.6.0
+    hooks:
+      - id: shfmt
+
+  - repo: https://github.com/JohnnyMorganz/Stylua-pre-commit-hook
+    rev: v1.0.0
+    hooks:
+      - id: stylua
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
