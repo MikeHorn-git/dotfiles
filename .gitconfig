@@ -1,0 +1,9 @@
+[user]
+	email = MikeHornProton@proton.me
+	name = MikeHorn-git
+[core]
+	editor = nvim
+[pull]
+	rebase = false
+[color]
+	ui = auto
